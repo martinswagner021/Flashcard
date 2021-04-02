@@ -1,18 +1,6 @@
 import Head from 'next/head'
 import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient()
-
-export async function getStaticProps() {
-    const users = await prisma.benutzer.findMany()
-    console.log(users)
-    
-    return{
-        props: {
-            users
-        }
-    }
-}
 
 export default function Index(props) {
     return(
@@ -28,3 +16,16 @@ export default function Index(props) {
     </>
 
 )}
+
+const prisma = new PrismaClient()
+
+export async function getStaticProps() {
+    const users = await prisma.benutzer.findMany()
+    console.log(users)
+    
+    return{
+        props: {
+            users
+        }
+    }
+}

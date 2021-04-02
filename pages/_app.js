@@ -1,12 +1,11 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 const theme = {
-  "primary" : "#",
+  "primary" : "#4DF530",
   "secondary" : {
-      "main" : "#",
-      "bright" : "#",
-      "dark" : "#",
-      "white" : "#f4f9f9",
+      "bright" : "#8EF77B",
+      "dark" : "#267517",
+      "white" : "#ffffff",
       "black" : "#000000"
   }
 }
@@ -17,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0px;
   }
   *::selection{
-    background: default;
+    background: ${theme.secondary.dark};
   }
   html{
     scroll-behavior: smooth;
