@@ -8,10 +8,9 @@ const LoginContainer = styled.div`
     height: 300px;
     transform: translate(-50%, -50%);
 
-    background-color: #eeeeee;
+    background-color: #ffffff;
     border: 2px solid ${ ( {theme} ) => theme.primary};
     border-radius: 20px;
-    box-shadow: 1px 1px 10px black;
 
     display: flex;
     flex-direction: column;
@@ -31,14 +30,16 @@ const LoginContainer = styled.div`
             
             background-color: transparent;
 
-            border: 0px;
+            
+            border: 2px solid transparent;
             border-bottom: 2px solid ${ ( {theme} ) => theme.primary};
+            transition: border 0.3s ease-in-out;
         }
         input:focus{
             outline: 0px;
             background-color: transparent;
 
-            border: 2px solid ${ ( {theme} ) => theme.primary};
+            border-bottom: 2px solid ${ ( {theme} ) => theme.secondary.dark};
         }
         input::placeholder{
             text-align: center;
@@ -54,6 +55,11 @@ const LoginContainer = styled.div`
             height: 40px;
 
             color: #ffffff;
+            transition: background-color 0.3s ease-in-out;
+        }
+        button:hover{
+            background-color: ${ ( {theme} ) => theme.secondary.dark};
+            cursor: pointer;
         }
 
         *{
@@ -63,15 +69,31 @@ const LoginContainer = styled.div`
 `
 
 LoginContainer.Background = styled.div`
-    background-color: lightgray;
+    background-color: #ffffff;
     
     position: fixed;
     top: 0;
     left: 0;
     z-index: -99;
     width: 100%;
-    height: 100vh
+    height: 100vh;
 
+    .Circle1{
+        width: 900px;
+
+        position: absolute;
+
+        top:-480px;
+        left:-480px;
+    }
+    .Circle2{
+        width: 500px;
+
+        position: absolute;
+
+        bottom:-250px;
+        right:-250px;
+    }
 `
 
 export default LoginContainer;

@@ -22,11 +22,12 @@ const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
   }
   body{
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
   
   a{
     text-decoration: none;
+    color: ${theme.primary}
   }
   a:visited{
     color: inherit;
