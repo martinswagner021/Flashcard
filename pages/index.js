@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import { PrismaClient } from '@prisma/client'
 
 
@@ -11,9 +12,7 @@ export default function Index(props) {
             <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet"></link>
         </Head>
         <body>
-            Hier unter findet man die ganzen benutzern wir haben:<br></br>
-            <div>"hier sollte ein props sein"</div>
-            <div></div>
+            <div><Link href="./login"><a>Click here to Log in!</a></Link></div>
         </body>
     </>
 

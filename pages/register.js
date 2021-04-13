@@ -20,14 +20,13 @@ export default function Index(props) {
             </LoginContainer.Background>
 
             <LoginContainer>
-                    <h1>Login</h1>
+                    <h1>Register</h1>
                     <form>
                         <input type="text" placeholder="Username" /><br></br>
                         <input type="password" placeholder="Password" /><br></br>
 
                         <button type="submit">Submit</button><br></br>
-                        <p>Aren't you an User yet? <Link href="./register"><a>Click here to register!</a></Link></p>
-
+                        <p>Are you already an User? <Link href="./login"><a>Click here to log in!</a></Link></p>
                     </form>
             </LoginContainer>
         </body>

@@ -24,13 +24,14 @@ const GlobalStyle = createGlobalStyle`
   body{
     font-family: 'Poppins', sans-serif;
   }
-  
   a{
     text-decoration: none;
-    color: ${theme.primary}
+    color: ${theme.primary};
+    transition: color 0.3s ease-in-out;
   }
-  a:visited{
-    color: inherit;
+  a:hover{
+    color: ${theme.secondary.dark};
+    transition: color 0.3s ease-in-out;
   }
 `
 
