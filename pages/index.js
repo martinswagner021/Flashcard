@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { PrismaClient } from '@prisma/client'
 
 
 export default function Index(props) {
@@ -17,16 +16,3 @@ export default function Index(props) {
     </>
 
 )}
-
-const prisma = new PrismaClient()
-
-export async function getStaticProps() {
-    const users = await prisma.benutzer.findMany()
-    console.log(users)
-    
-    return{
-        props: {
-            users
-        }
-    }
-}
