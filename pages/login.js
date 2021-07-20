@@ -20,9 +20,9 @@ export default function Index(props) {
 
             <LoginContainer>
                     <h1>Login</h1>
-                    <form>
-                        <input type="text" placeholder="Username" /><br></br>
-                        <input type="password" placeholder="Password" /><br></br>
+                    <form action={process.env.API_URL + 'login'} method='POST'>
+                        <input name="username" type="text" placeholder="Username" /><br></br>
+                        <input name="password" type="password" placeholder="Password" /><br></br>
 
                         <button type="submit">Submit</button><br></br>
                         <p>Aren't you an User yet? <Link href="./register"><a>Click here to register!</a></Link></p>
