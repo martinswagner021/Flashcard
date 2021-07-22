@@ -4,7 +4,7 @@ import Link from 'next/link'
 import LoginContainer from '../src/components/Login/index'
 
 
-export default function Index(props) {
+export default function Index() {
     return(
         <>
         <Head>

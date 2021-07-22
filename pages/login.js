@@ -1,10 +1,22 @@
+// Libraries Imports
+import axios from 'axios'
 import Head from 'next/head'
 import Link from 'next/link'
 
+// Hooks Imports
+import { useState } from 'react'
+
+// Components Imports
 import LoginContainer from '../src/components/Login/index'
 
-
+// Index component
 export default function Index(props) {
+
+    // Hooks to get the user input data
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+
+
     return(
         <>
         <Head>
@@ -20,11 +32,26 @@ export default function Index(props) {
 
             <LoginContainer>
                     <h1>Login</h1>
-                    <form action={process.env.API_URL + 'login'} method='POST'>
-                        <input name="username" type="text" placeholder="Username" /><br></br>
-                        <input name="password" type="password" placeholder="Password" /><br></br>
+                    
+                    <form>
+                    
+                        <input type="text" placeholder="Username" onChange={e => setUsername(e.target.value)} /><br></br>
+                        <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)}/><br></br>
 
-                        <button type="submit">Submit</button><br></br>
+                        <button type="button" onClick={
+
+                            // onClick will make the login request
+
+                            () => {
+                                const result = axios.post('http://localhost:5000/login'
+                                ,{
+                                    username: username,
+                                    password: password
+                                })
+                                .then(res => {console.log(res.data)})
+                            }
+
+                        }>Submit</button><br></br>
                         <p>Aren't you an User yet? <Link href="./register"><a>Click here to register!</a></Link></p>
 
                     </form>
