@@ -7,6 +7,13 @@ const theme = {
       "dark" : "#267517",
       "white" : "#ffffff",
       "black" : "#000000"
+  },
+  "messages": {
+    "error": {
+      "background": "FFD6D6",
+      "boder": "7A0000"
+    },
+    "success": "7A0000"
   }
 }
 
