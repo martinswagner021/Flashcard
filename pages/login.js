@@ -17,13 +17,13 @@ export default function Index(props) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
-    const [error, setError] = useState('')
 
     
     // Functions used in the code
     
     // onClick function that will make the login request
     const reqLogin = () => {
+        setMessage('')
         const result = axios.post('http://localhost:5000/login'
         ,{
             username: username,
@@ -31,12 +31,11 @@ export default function Index(props) {
         })
         .then(res => {
             if(res.data.error) {
-                setError(res.data.error)
+                setMessage(res.data.error)
             }
 
             if(res.data.token){
                 console.log(res.data.token)
-                setError('')
             }
         })
     }
@@ -50,14 +49,15 @@ export default function Index(props) {
             <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet"></link>
         </Head>
         <body>
+            
+            <MessageBox display={message?'flex':'none'}>
+                <p>{message}</p>
+            </MessageBox>
+
             <LoginContainer.Background>
             <img className="Circle1" src="./circle.png" />
             <img className="Circle2" src="./circle.png" />
             </LoginContainer.Background>
-
-            <MessageBox>
-                <p>{error?error:''}</p>    
-            </MessageBox>
 
             <LoginContainer>
                     <h1>Login</h1>

@@ -8,16 +8,18 @@ const MessageBox = styled.div`
     transform: translateX(-50%);
     z-index: 99;
 
-    display: flex;
-    padding: 20px;
+    /* Display if there is a true message props parameter */
+    display: ${({display}) => display};
+        
+    padding: 20px;    
 
     max-width: fit-content;
     max-height: fit-content;
-    background-color: #FFD6D6;
-    border: 2px solid #7A0000;
+    background-color: #${ ( {theme} ) => theme.messages.error.background};
+    border: 2px solid #${( {theme} ) => theme.messages.error.border};
     border-radius: 10px;
 
-    animation: .8s slide forwards;
+    animation: slide 4s forwards;
 
     flex-direction: column;
     align-items: center;
@@ -25,10 +27,16 @@ const MessageBox = styled.div`
 
     @keyframes slide {
         0%{
-            right: 0%;
+            top: -100%;
+        }
+        15%{
+            top: 50px;
+        }
+        75%{
+            top: 50px;
         }
         100%{
-            left: 50%;
+            top: -100%;
         }
     }
 `

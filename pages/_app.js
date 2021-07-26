@@ -11,7 +11,7 @@ const theme = {
   "messages": {
     "error": {
       "background": "FFD6D6",
-      "boder": "7A0000"
+      "border": "7A0000"
     },
     "success": "7A0000"
   }
