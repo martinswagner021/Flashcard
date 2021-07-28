@@ -19,9 +19,9 @@ export default function Index(props) {
     const [message, setMessage] = useState('')
 
     
-    // Functions used in the code
+    // Functions used in return function
     
-    // onClick function that will make the login request
+    // onClick function that will make the register request
     const reqLogin = () => {
         setMessage('')
         
@@ -36,6 +36,7 @@ export default function Index(props) {
             }
 
             if(res.data.token){
+                sessionStorage('token', res.data.token)
                 console.log(res.data.token)
             }
         })
