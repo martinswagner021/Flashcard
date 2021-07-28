@@ -4,7 +4,5 @@ So in order to do that, I've learned a new method of memorizing things and it is
 And that gave me the idea of implementing a new Website based on this service for everyone.
 
 ### Libraries Used in this frontend (Do not forget to also check the 'FlashcardBackend' repository)
-- NextJs
-- ReactJs
-- Styled-Components
+- Express
 - Axios
