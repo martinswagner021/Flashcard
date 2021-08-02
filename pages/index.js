@@ -6,7 +6,6 @@ import axios from 'axios'
 
 // Hooks Imports
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 
 
 // Components Imports
@@ -14,6 +13,7 @@ import { useRouter } from 'next/router'
 
 // Index Component
 export default function Index(props) {
+
 
     // Hooks to process the cards from API
     const [cards, setCards] = useState([])
@@ -24,25 +24,18 @@ export default function Index(props) {
 
     useEffect(() => {
 
-       
-            const token = sessionStorage.getItem('token')
-
-            axios.get(`http://localhost:5000/card`, {
-                headers: {
-                    'authorization': `Bearer ${token}`
-                }
-            })
-            .then(res => {
-                if(res.status === 401) {
-                    useRouter().push('/login')
-                }
-                
+        const token = sessionStorage.getItem('token')
+        console.log(token)
+    
+        axios.get(`http://localhost:5000/card`, {
+            headers: {
+                'authorization': `Bearer ${token}`
+            }
+        })
+        .then(res => {
+            console.log(res.data)
             })
         })
-        
-        
-    
-        
 
 
     // HTML Return Function
