@@ -7,7 +7,7 @@ import axios from 'axios'
 import { useState } from 'react'
 
 // Components Imports
-import LoginContainer from '../src/components/Login/index'
+import Container from '../src/components/Container/index'
 import MessageBox from '../src/components/Messages'
 
 // Index component
@@ -58,12 +58,12 @@ export default function Index(props) {
             </MessageBox>
 
 
-            <LoginContainer.Background>
+            <Container.Background>
             <img className="Circle1" src="./circle.png" />
             <img className="Circle2" src="./circle.png" />
-            </LoginContainer.Background>
+            </Container.Background>
 
-            <LoginContainer>
+            <Container>
                     <h1>Register</h1>
 
                     <form>
@@ -76,7 +76,7 @@ export default function Index(props) {
                         <p>Are you already an User? <Link href="./login"><a>Click here to log in!</a></Link></p>
                     </form>
 
-            </LoginContainer>
+            </Container>
         </body>
     </>
 

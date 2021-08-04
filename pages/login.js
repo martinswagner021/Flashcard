@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 // Components Imports
-import LoginContainer from '../src/components/Login/index'
+import Container from '../src/components/Container/index'
 import MessageBox from '../src/components/Messages'
 
 // Index component
@@ -55,12 +55,12 @@ export default function Index(props) {
                 <p>{message}</p>
             </MessageBox>
 
-            <LoginContainer.Background>
+            <Container.Background>
             <img className="Circle1" src="./circle.png" />
             <img className="Circle2" src="./circle.png" />
-            </LoginContainer.Background>
+            </Container.Background>
 
-            <LoginContainer>
+            <Container>
                     <h1>Login</h1>
                     
                     <form>
@@ -72,7 +72,7 @@ export default function Index(props) {
                         <p>Aren't you an User yet? <Link href="./register"><a>Click here to register!</a></Link></p>
 
                     </form>
-            </LoginContainer>
+            </Container>
         </body>
     </>
 

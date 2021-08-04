@@ -9,35 +9,33 @@ import { useState, useEffect } from 'react'
 
 
 // Components Imports
-
+import { Background } from '../src/components/Home'
+import Container from '../src/components/Container'
 
 // Index Component
 export default function Index(props) {
 
+    const [user, setUser] = useState('')
 
-    // Hooks to process the cards from API
-    const [cards, setCards] = useState([])
-    
-    // Functions used in return function
-
-    //  Get all cards of the user
-
-    useEffect(() => {
-
-        const token = sessionStorage.getItem('token')
-        console.log(token)
-    
-        axios.get(`http://localhost:5000/card`, {
+    function findUsername(token) {
+        axios.get('http://localhost:5000/user', {
             headers: {
                 'authorization': `Bearer ${token}`
             }
+        }).then((res) => {
+            setUser(res.data.username)
         })
-        .then(res => {
-            console.log(res.data)
-            })
-        })
+    }
 
+    useEffect(() => {
+        const token = sessionStorage.getItem('token')
+        
+        if(token) {
+            findUsername(token)
+        }
+    })
 
+ 
     // HTML Return Function
     return(
         <>
@@ -47,11 +45,16 @@ export default function Index(props) {
             <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet"></link>
         </Head>
         <body>
-            <div><Link href="./login"><a>Click here to Log in!</a></Link></div>
+            <Container.Background>
+                <img className="Circle1" src="./circle.png" />
+                <img className="Circle2" src="./circle.png" />
+            </Container.Background>
 
-            <div>
-                
-            </div>
+            <Container>
+                <p>Welcome {user}!</p>
+                <img src='./flashcard.png'></img>
+                <button>Get started with Flashcards!</button>
+            </Container>
         </body>
     </>
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const LoginContainer = styled.div`
+const Container = styled.div`
     position: absolute;
     top: 50vh;
     left: 50%;
@@ -14,7 +14,23 @@ const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px;
+    padding: 40px;
+
+    button{
+            background-color: ${ ( {theme} ) => theme.primary};
+            border: 0px;
+            border-radius: 50px;
+
+            width: 130px;
+            height: 40px;
+
+            color: #ffffff;
+            transition: background-color 0.3s ease-in-out;
+        }
+    button:hover{
+        background-color: ${ ( {theme} ) => theme.secondary.dark};
+        cursor: pointer;
+    }
 
     form{
         display: flex;
@@ -45,29 +61,13 @@ const LoginContainer = styled.div`
             margin-left: 5px;
         }
 
-        button{
-            background-color: ${ ( {theme} ) => theme.primary};
-            border: 0px;
-            border-radius: 50px;
-
-            width: 130px;
-            height: 40px;
-
-            color: #ffffff;
-            transition: background-color 0.3s ease-in-out;
-        }
-        button:hover{
-            background-color: ${ ( {theme} ) => theme.secondary.dark};
-            cursor: pointer;
-        }
-
         *{
             margin-top: 10px;
         }
     }
 `
 
-LoginContainer.Background = styled.div`
+Container.Background = styled.div`
     background-color: #ffffff;
     
     position: fixed;
@@ -84,6 +84,18 @@ LoginContainer.Background = styled.div`
 
         top:-480px;
         left:-480px;
+        animation: appear 0.8s forwards;
+
+        @keyframes appear{
+            0%{
+                top:-780px;
+                left:-680px;
+            }
+            100%{
+                top:-480px;
+                left:-480px;
+            }
+        }
     }
     .Circle2{
         width: 500px;
@@ -92,7 +104,20 @@ LoginContainer.Background = styled.div`
 
         bottom:-250px;
         right:-250px;
+        
+        animation: appear2 0.8s forwards;
+        
+        @keyframes appear2{
+            0%{
+                bottom:-450px;
+                right:-450px;
+            }
+            100%{
+                bottom:-250px;
+                right:-250px;
+            }
+        }
     }
 `
 
-export default LoginContainer;
+export default Container;
