@@ -21,7 +21,9 @@ export default function Index(props) {
     const router = useRouter()
 
     function findUsername(token) {
-        axios.get('http://localhost:5000/user', {
+        const api = process.env.NEXT_PUBLIC_API_URL
+
+        axios.get(`${api}/user`, {
             headers: {
                 'authorization': `Bearer ${token}`
             }

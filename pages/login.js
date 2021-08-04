@@ -27,7 +27,9 @@ export default function Index(props) {
     // onClick function that will make the login request
     const reqLogin = () => {
         setMessage('')
-        const result = axios.post('http://localhost:5000/login'
+        const api = process.env.NEXT_PUBLIC_API_URL
+        console.log(api)
+        axios.post(`${api}/login`
         ,{
             username: username,
             password: password

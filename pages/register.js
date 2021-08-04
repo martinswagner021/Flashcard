@@ -27,8 +27,8 @@ export default function Index(props) {
     // onClick function that will make the register request
     const reqRegister = () => {
         setMessage('')
-        
-        const result = axios.post('http://localhost:5000/register'
+        const api = process.env.NEXT_PUBLIC_API_URL
+        axios.post(`${api}/register`
         ,{
             username: username,
             password: password
