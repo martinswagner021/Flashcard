@@ -5,6 +5,7 @@ import Link from 'next/link'
 
 // Hooks Imports
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 // Components Imports
 import Container from '../src/components/Container/index'
@@ -17,6 +18,8 @@ export default function Index(props) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
+
+    const router = useRouter()
 
     
     // Functions used in return function
@@ -36,7 +39,7 @@ export default function Index(props) {
 
             if(res.data.token){
                 sessionStorage.setItem('token', res.data.token)
-                console.log(res.data.token)
+                router.push('/')
             }
         })
     }

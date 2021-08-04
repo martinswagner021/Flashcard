@@ -6,6 +6,7 @@ import axios from 'axios'
 
 // Hooks Imports
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 
 // Components Imports
@@ -16,6 +17,8 @@ import Container from '../src/components/Container'
 export default function Index(props) {
 
     const [user, setUser] = useState('')
+
+    const router = useRouter()
 
     function findUsername(token) {
         axios.get('http://localhost:5000/user', {
@@ -30,9 +33,11 @@ export default function Index(props) {
     useEffect(() => {
         const token = sessionStorage.getItem('token')
         
-        if(token) {
-            findUsername(token)
+        if(!token) {
+            return router.push('/login')
         }
+
+        findUsername(token)
     })
 
  

@@ -5,6 +5,7 @@ import axios from 'axios'
 
 // Hooks Imports
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 // Components Imports
 import Container from '../src/components/Container/index'
@@ -18,11 +19,13 @@ export default function Index(props) {
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
 
+    const router = useRouter()
+
     
     // Functions used in return function
     
     // onClick function that will make the register request
-    const reqLogin = () => {
+    const reqRegister = () => {
         setMessage('')
         
         const result = axios.post('http://localhost:5000/register'
@@ -36,8 +39,8 @@ export default function Index(props) {
             }
 
             if(res.data.token){
-                sessionStorage('token', res.data.token)
-                console.log(res.data.token)
+                sessionStorage.setItem('token', res.data.token)
+                router.push('/')
             }
         })
     }
@@ -71,7 +74,7 @@ export default function Index(props) {
                         <input type="text" placeholder="Username" onChange={e => setUsername(e.target.value)}/><br></br>
                         <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)}/><br></br>
 
-                        <button type="button" onClick={reqLogin}>Submit</button><br></br>
+                        <button type="button" onClick={reqRegister}>Submit</button><br></br>
 
                         <p>Are you already an User? <Link href="./login"><a>Click here to log in!</a></Link></p>
                     </form>
