@@ -28,7 +28,6 @@ export default function Index(props) {
     const reqLogin = () => {
         setMessage('')
         const api = process.env.NEXT_PUBLIC_API_URL
-        console.log(api)
         axios.post(`${api}/login`
         ,{
             username: username,
