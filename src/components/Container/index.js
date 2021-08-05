@@ -16,6 +16,10 @@ const Container = styled.div`
     align-items: center;
     padding: 40px;
 
+    span{
+        color: ${({theme}) => theme.primary};
+    }
+
     button{
             background-color: ${ ( {theme} ) => theme.primary};
             border: 0px;
@@ -32,7 +36,9 @@ const Container = styled.div`
         cursor: pointer;
     }
 
-    form{
+`
+
+Container.Form = styled.form`
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -64,7 +70,27 @@ const Container = styled.div`
         *{
             margin-top: 10px;
         }
+`
+
+Container.Salutation = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    
+    .Description {
+        text-align: center;
     }
+
+    .FlashcardIcon {
+        width: 5rem;
+
+        margin-top: 1rem;
+    }
+`
+
+Container.DisplayCards = styled.div`
+    
 `
 
 Container.Background = styled.div`

@@ -67,7 +67,7 @@ export default function Index(props) {
             <Container>
                     <h1>Login</h1>
                     
-                    <form>
+                    <Container.Form>
                     
                         <input type="text" placeholder="Username" onChange={e => setUsername(e.target.value)} /><br></br>
                         <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)}/><br></br>
@@ -75,7 +75,7 @@ export default function Index(props) {
                         <button type="button" onClick={reqLogin}>Submit</button><br></br>
                         <p>Aren't you an User yet? <Link href="./register"><a>Click here to register!</a></Link></p>
 
-                    </form>
+                    </Container.Form>
             </Container>
         </body>
     </>

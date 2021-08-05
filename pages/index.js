@@ -5,24 +5,23 @@ import axios from 'axios'
 
 
 // Hooks Imports
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createElement } from 'react'
 import { useRouter } from 'next/router'
 
 
 // Components Imports
-import { Background } from '../src/components/Home'
 import Container from '../src/components/Container'
 
 // Index Component
 export default function Index(props) {
+    const api = process.env.NEXT_PUBLIC_API_URL
 
     const [user, setUser] = useState('')
 
     const router = useRouter()
 
-    function findUsername(token) {
-        const api = process.env.NEXT_PUBLIC_API_URL
 
+    function findUsername(token) {
         axios.get(`${api}/user`, {
             headers: {
                 'authorization': `Bearer ${token}`
@@ -31,7 +30,6 @@ export default function Index(props) {
             setUser(res.data.username)
         })
     }
-
     useEffect(() => {
         const token = sessionStorage.getItem('token')
         
@@ -41,6 +39,19 @@ export default function Index(props) {
 
         findUsername(token)
     })
+
+
+    function getStarted() {
+        const token = sessionStorage.getItem('token')
+
+        axios.get(`${api}/card`, {
+            headers: {
+                'authorization': `Bearer ${token}`
+            }
+        }).then((res) => {
+            
+        })
+    }
 
  
     // HTML Return Function
@@ -58,9 +69,20 @@ export default function Index(props) {
             </Container.Background>
 
             <Container>
-                <p>Welcome {user}!</p>
-                <img src='./flashcard.png'></img>
-                <button>Get started with Flashcards!</button>
+                <Container.Salutation>
+                    <p>Welcome <span>{user}</span>!</p><br/>
+                    
+                    <p className="Description">What are <span>Flashcards</span>?<br/><br/>
+                    Flashcards are a way to learn new things!<br/>
+                    With them you write a title and add a short description, so that later on if you want to remember something. You can check its value here in our Flashcard app!</p>
+                    
+                    <img className="FlashcardIcon" src='./flashcard.png'></img>
+                    <button onClick={getStarted}>Get started with Flashcards!</button>
+                </Container.Salutation>
+
+                <Container.DisplayCards cards={props.cards}>
+                    {}
+                </Container.DisplayCards>
             </Container>
         </body>
     </>
