@@ -10,13 +10,15 @@ import { useRouter } from 'next/router'
 
 
 // Components Imports
-import Container from '../src/components/Container'
+import Container from '../src/styled-components/Container'
+import displayCards from '../src/components/DisplayCards'
 
 // Index Component
 export default function Index(props) {
     const api = process.env.NEXT_PUBLIC_API_URL
 
     const [user, setUser] = useState('')
+    const [cards, setCards] = useState([])
 
     const router = useRouter()
 
@@ -41,7 +43,7 @@ export default function Index(props) {
     })
 
 
-    function getStarted() {
+    function getCards() {
         const token = sessionStorage.getItem('token')
 
         axios.get(`${api}/card`, {
@@ -49,7 +51,7 @@ export default function Index(props) {
                 'authorization': `Bearer ${token}`
             }
         }).then((res) => {
-            
+            setCards(res.data.result)
         })
     }
 
@@ -77,12 +79,12 @@ export default function Index(props) {
                     With them you write a title and add a short description, so that later on if you want to remember something. You can check its value here in our Flashcard app!</p>
                     
                     <img className="FlashcardIcon" src='./flashcard.png'></img>
-                    <button onClick={getStarted}>Get started with Flashcards!</button>
+                    <button onClick={getCards}>Get started with Flashcards!</button>
                 </Container.Salutation>
 
-                <Container.DisplayCards cards={props.cards}>
-                    {}
-                </Container.DisplayCards>
+                <displayCards cards={cards}>
+                    
+                </displayCards>
             </Container>
         </body>
     </>

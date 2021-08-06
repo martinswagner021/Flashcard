@@ -8,8 +8,8 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 // Components Imports
-import Container from '../src/components/Container/index'
-import MessageBox from '../src/components/Messages'
+import Container from '../src/styled-components/Container/index'
+import MessageBox from '../src/styled-components/Messages'
 
 // Index component
 export default function Index(props) {
