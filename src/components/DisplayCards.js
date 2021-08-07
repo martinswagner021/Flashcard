@@ -1,11 +1,12 @@
-function displayCards({cards}) {
+import Card from '../styled-components/Card'
+
+function DisplayCards({card}) {
     return(
-        <>
-        <h1>title</h1>
-        <p>description</p>
-        <p>{cards[0].title}</p>
-        </>
+        <Card>
+            <h1>{card.title}</h1>
+            <p>{card.content}</p>
+        </Card>
     )
 }
 
-export default displayCards
+export default DisplayCards

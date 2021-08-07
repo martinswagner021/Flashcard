@@ -4,7 +4,7 @@ const Container = styled.div`
     position: absolute;
     top: 50vh;
     left: 50%;
-    width: 400px;
+    width: 12rem;
     transform: translate(-50%, -50%);
 
     background-color: #ffffff;
@@ -14,7 +14,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px;
+    padding: 3.5rem;
 
     span{
         color: ${({theme}) => theme.primary};
@@ -44,6 +44,10 @@ Container.Form = styled.form`
         align-items: center;
         
         margin-top: 30px;
+
+        p{
+            text-align: center;
+        }
 
         input{
             height: 30px;
@@ -87,10 +91,6 @@ Container.Salutation = styled.div`
 
         margin-top: 1rem;
     }
-`
-
-Container.DisplayCards = styled.div`
-    
 `
 
 Container.Background = styled.div`

@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 
 // Components Imports
 import Container from '../src/styled-components/Container/index'
-import MessageBox from '../src/styled-components/Messages'
+import Message from '../src/components/Message'
 
 // Index component
 export default function Index(props) {
@@ -56,9 +56,7 @@ export default function Index(props) {
         </Head>
         <body>
 
-            <MessageBox display={message?'flex':'none'}>
-                <p>{message}</p>
-            </MessageBox>
+            {message ? <Message message={message} /> : <></>}
 
 
             <Container.Background>

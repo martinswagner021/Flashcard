@@ -5,13 +5,15 @@ import axios from 'axios'
 
 
 // Hooks Imports
-import { useState, useEffect, createElement } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 
 // Components Imports
 import Container from '../src/styled-components/Container'
-import displayCards from '../src/components/DisplayCards'
+import DisplayCards from '../src/components/DisplayCards'
+import Card from '../src/styled-components/Card'
+import HomeIndex from '../src/components/HomeIndex'
 
 // Index Component
 export default function Index(props) {
@@ -19,6 +21,7 @@ export default function Index(props) {
 
     const [user, setUser] = useState('')
     const [cards, setCards] = useState([])
+    const [salutationDisplay, setSalutationDisplay] = useState(true)
 
     const router = useRouter()
 
@@ -28,18 +31,20 @@ export default function Index(props) {
             headers: {
                 'authorization': `Bearer ${token}`
             }
-        }).then((res) => {
+        })
+        .catch((error) => {
+            const {message} = error.toJSON()
+            message === "Request failed with status code 401" ? router.push('/login') : console.log(message)
+        })
+        .then((res) => {
             setUser(res.data.username)
         })
     }
+
     useEffect(() => {
         const token = sessionStorage.getItem('token')
         
-        if(!token) {
-            return router.push('/login')
-        }
-
-        findUsername(token)
+        !token ? router.push('login') : findUsername(token)
     })
 
 
@@ -51,6 +56,7 @@ export default function Index(props) {
                 'authorization': `Bearer ${token}`
             }
         }).then((res) => {
+            setSalutationDisplay(false)
             setCards(res.data.result)
         })
     }
@@ -69,23 +75,16 @@ export default function Index(props) {
                 <img className="Circle1" src="./circle.png" />
                 <img className="Circle2" src="./circle.png" />
             </Container.Background>
-
-            <Container>
-                <Container.Salutation>
-                    <p>Welcome <span>{user}</span>!</p><br/>
-                    
-                    <p className="Description">What are <span>Flashcards</span>?<br/><br/>
-                    Flashcards are a way to learn new things!<br/>
-                    With them you write a title and add a short description, so that later on if you want to remember something. You can check its value here in our Flashcard app!</p>
-                    
-                    <img className="FlashcardIcon" src='./flashcard.png'></img>
-                    <button onClick={getCards}>Get started with Flashcards!</button>
-                </Container.Salutation>
-
-                <displayCards cards={cards}>
-                    
-                </displayCards>
-            </Container>
+            
+            {salutationDisplay ? <HomeIndex user={user} getCards={getCards} /> : <></>}
+            
+            <Card.Grid>
+                {
+                    cards.map((e) => 
+                        <DisplayCards card={e} />
+                    )
+                }
+            </Card.Grid>
         </body>
     </>
 

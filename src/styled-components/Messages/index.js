@@ -9,7 +9,7 @@ const MessageBox = styled.div`
     z-index: 99;
 
     /* Display if there is a true message props parameter */
-    display: ${({display}) => display};
+    display: flex;
         
     padding: 20px;    
 
