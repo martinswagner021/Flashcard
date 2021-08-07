@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import axios from 'axios'
 
@@ -10,6 +9,7 @@ import HomeIndex from '../src/components/HomeIndex'
 import Background from '../src/components/Background'
 import CardStyled from '../src/styled-components/CardStyled'
 import Card from '../src/components/Card'
+import HeadPattern from '../src/components/HeadPattern'
 
 export default function Index() {
     const api = process.env.NEXT_PUBLIC_API_URL
@@ -20,6 +20,13 @@ export default function Index() {
 
     const router = useRouter()
 
+    
+    useEffect(() => {
+        const token = sessionStorage.getItem('token')
+        
+        !token ? router.push('login') : findUsername(token)
+    })
+    
     function findUsername(token) {
         axios.get(`${api}/user`, {
             headers: {
@@ -34,13 +41,7 @@ export default function Index() {
             setUser(res.data.username)
         })
     }
-
-    useEffect(() => {
-        const token = sessionStorage.getItem('token')
-        
-        !token ? router.push('login') : findUsername(token)
-    })
-
+    
     function getCards() {
         const token = sessionStorage.getItem('token')
 
@@ -57,20 +58,16 @@ export default function Index() {
  
     return(
         <>
-        <Head>
-            <title>Flashcard</title>
-            <link rel="preconnect" href="https://fonts.gstatic.com" />
-            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet"></link>
-        </Head>
-        <body>
-            <Background />
+                <HeadPattern/>
+            <body>
+                <Background />
             
-            {salutationDisplay ? <HomeIndex user={user} getCards={getCards} /> : <></>}
+                {salutationDisplay ? <HomeIndex user={user} getCards={getCards} /> : <></>}
             
-            <CardStyled.Grid>
-                { cards.map((e) => <Card card={e} />) }
-            </CardStyled.Grid>
-        </body>
-    </>
+                <CardStyled.Grid>
+                    { cards.map((e) => <Card card={e} />) }
+                </CardStyled.Grid>
+            </body>
+        </>
 
 )}

@@ -4,7 +4,7 @@ const Container = styled.div`
     position: absolute;
     top: 50vh;
     left: 50%;
-    width: 12rem;
+    width: 17rem;
     transform: translate(-50%, -50%);
 
     background-color: #ffffff;
@@ -41,18 +41,17 @@ const Container = styled.div`
         flex-direction: column;
         align-items: center;
         
-        margin-top: 30px;
+        margin-top: 1.5rem;
 
         p{
             text-align: center;
         }
 
         input{
-            height: 30px;
-            width: 200px;
+            height: 2rem;
+            width: 12rem;
             
             background-color: transparent;
-
             
             border: 2px solid transparent;
             border-bottom: 2px solid ${ ( {theme} ) => theme.primary};
@@ -66,11 +65,10 @@ const Container = styled.div`
         }
         input::placeholder{
             text-align: center;
-            margin-left: 5px;
         }
 
         *{
-            margin-top: 10px;
+            margin-top: 0.3rem;
         }
     }
 `

@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import Container from '../src/styled-components/Container/index'
 import Message from '../src/components/Message'
 import Background from '../src/components/Background'
+import HeadPattern from '../src/components/HeadPattern'
 
 export default function Index() {
 
@@ -40,34 +41,30 @@ export default function Index() {
 
     return(
         <>
-        <Head>
-            <title>Flashcard</title>
-            <link rel="preconnect" href="https://fonts.gstatic.com" />
-            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet"></link>
-        </Head>
-        <body>
+                <HeadPattern/>
+            <body>
 
-            {message ? <Message message={message} /> : <></>}
+                {message ? <Message message={message} /> : <></>}
 
-            <Background />
+                <Background />
 
-            <Container>
-                    <h1>Register</h1>
+                <Container>
+                        <h1>Register</h1>
 
-                    <form onSubmit={e => {
-                            e.preventDefault()
-                            reqRegister()
-                        }}>
-                            
-                        <input type="text" placeholder="Username" onChange={e => setUsername(e.target.value)}/><br></br>
-                        <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)}/><br></br>
+                        <form onSubmit={e => {
+                                e.preventDefault()
+                                reqRegister()
+                            }}>
+                                
+                            <input type="text" placeholder="Username" onChange={e => setUsername(e.target.value)}/><br></br>
+                            <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)}/><br></br>
 
-                        <button type="submit">Submit</button><br></br>
+                            <button type="submit">Submit</button><br></br>
 
-                        <p>Are you already an User? <Link href="./login"><a>Click here to log in!</a></Link></p>
-                    </form>
-            </Container>
-        </body>
-    </>
+                            <p>Are you already an User? <Link href="./login"><a>Click here to log in!</a></Link></p>
+                        </form>
+                </Container>
+            </body>
+        </>
 
 )}
