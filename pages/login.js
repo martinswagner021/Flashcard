@@ -1,30 +1,22 @@
-// Libraries Imports
 import axios from 'axios'
 import Head from 'next/head'
 import Link from 'next/link'
 
-// Hooks Imports
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
-// Components Imports
 import Container from '../src/styled-components/Container/index'
 import Message from '../src/components/Message'
+import Background from '../src/components/Background'
 
-// Index component
 export default function Index(props) {
 
-    // Hooks to get the user input data
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
 
-    const router = useRouter()
-
+    const router = useRouter()    
     
-    // Functions used in return function
-    
-    // onClick function that will make the login request
     const reqLogin = () => {
         setMessage('')
         const api = process.env.NEXT_PUBLIC_API_URL
@@ -45,7 +37,6 @@ export default function Index(props) {
         })
     }
 
-    // HTML Return function
     return(
         <>
         <Head>
@@ -57,23 +48,23 @@ export default function Index(props) {
             
             {message ? <Message message={message} /> : <></>}
 
-            <Container.Background>
-            <img className="Circle1" src="./circle.png" />
-            <img className="Circle2" src="./circle.png" />
-            </Container.Background>
+            <Background />
 
             <Container>
                     <h1>Login</h1>
                     
-                    <Container.Form>
-                    
+                    <form onSubmit={e => {
+                            e.preventDefault()
+                            reqLogin()
+                        }}>
+
                         <input type="text" placeholder="Username" onChange={e => setUsername(e.target.value)} /><br></br>
                         <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)}/><br></br>
 
-                        <button type="button" onClick={reqLogin}>Submit</button><br></br>
+                        <button type="submit">Submit</button><br></br>
                         <p>Aren't you an User yet? <Link href="./register"><a>Click here to register!</a></Link></p>
 
-                    </Container.Form>
+                    </form>
             </Container>
         </body>
     </>

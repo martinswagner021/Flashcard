@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Card = styled.div`
+const CardStyled = styled.div`
     background-color: ${({theme}) => theme.secondary.white};
 
     border: 2px solid ${({theme}) => theme.primary};
@@ -17,7 +17,7 @@ const Card = styled.div`
         font-size: 1.5rem;
     }
 `
-Card.Grid = styled.div`
+CardStyled.Grid = styled.div`
     padding: 2rem;
 
     display: grid;
@@ -26,4 +26,4 @@ Card.Grid = styled.div`
     grid-gap: 1rem;
 `
 
-export default Card
+export default CardStyled

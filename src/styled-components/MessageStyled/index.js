@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const MessageBox = styled.div`
+const MessageStyled = styled.div`
 
     position: absolute;
     top: 50px;
@@ -41,4 +41,4 @@ const MessageBox = styled.div`
     }
 `
 
-export default MessageBox
+export default MessageStyled

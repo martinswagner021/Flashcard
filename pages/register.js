@@ -1,32 +1,25 @@
-// Libraries Imports
 import Head from 'next/head'
 import Link from 'next/link'
 import axios from 'axios'
 
-// Hooks Imports
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
-// Components Imports
 import Container from '../src/styled-components/Container/index'
 import Message from '../src/components/Message'
+import Background from '../src/components/Background'
 
-// Index component
-export default function Index(props) {
+export default function Index() {
 
-    // Hooks to get the user input data
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
 
-    const router = useRouter()
-
+    const router = useRouter()    
     
-    // Functions used in return function
-    
-    // onClick function that will make the register request
     const reqRegister = () => {
         setMessage('')
+
         const api = process.env.NEXT_PUBLIC_API_URL
         axios.post(`${api}/register`
         ,{
@@ -45,8 +38,6 @@ export default function Index(props) {
         })
     }
 
-
-    // HTML Return function
     return(
         <>
         <Head>
@@ -58,25 +49,23 @@ export default function Index(props) {
 
             {message ? <Message message={message} /> : <></>}
 
-
-            <Container.Background>
-            <img className="Circle1" src="./circle.png" />
-            <img className="Circle2" src="./circle.png" />
-            </Container.Background>
+            <Background />
 
             <Container>
                     <h1>Register</h1>
 
-                    <Container.Form>
-
+                    <form onSubmit={e => {
+                            e.preventDefault()
+                            reqRegister()
+                        }}>
+                            
                         <input type="text" placeholder="Username" onChange={e => setUsername(e.target.value)}/><br></br>
                         <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)}/><br></br>
 
-                        <button type="button" onClick={reqRegister}>Submit</button><br></br>
+                        <button type="submit">Submit</button><br></br>
 
                         <p>Are you already an User? <Link href="./login"><a>Click here to log in!</a></Link></p>
-                    </Container.Form>
-
+                    </form>
             </Container>
         </body>
     </>

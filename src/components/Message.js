@@ -1,10 +1,10 @@
-import MessageBox from "../styled-components/Messages"
+import MessageStyled from "../styled-components/MessageStyled"
 
 function Message({message}) {
     return(
-        <MessageBox>
+        <MessageStyled>
             <p>{message}</p>
-        </MessageBox>
+        </MessageStyled>
     )
 }
 
