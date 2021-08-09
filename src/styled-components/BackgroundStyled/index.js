@@ -6,7 +6,7 @@ const BackgroundStyled = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    z-index: -99;
+    z-index: ${({isLoading}) => isLoading ? 3 : -1};
     width: 100%;
     height: 100vh;
 

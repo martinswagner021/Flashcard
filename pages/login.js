@@ -8,17 +8,21 @@ import Container from '../src/styled-components/Container/index'
 import Message from '../src/components/Message'
 import Background from '../src/components/Background'
 import HeadPattern from '../src/components/HeadPattern'
+import Loading from '../src/components/Loading'
 
 export default function Index() {
     
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
+    const [loading, setLoading] = useState(false)
     
     const router = useRouter()
 
     const reqLogin = () => {
+        setLoading(true)
         setMessage('')
+
         const api = process.env.NEXT_PUBLIC_API_URL
         axios.post(`${api}/login`
         ,{
@@ -26,14 +30,15 @@ export default function Index() {
             password: password
         })
         .then(res => {
-            if(res.data.error) {
-                setMessage(res.data.error)
-            }
+
+            if(res.data.error) setMessage(res.data.error)
 
             if(res.data.token){
                 sessionStorage.setItem('token', res.data.token)
                 router.push('/')
             }
+
+            setLoading(false)
         })
     }
 
@@ -48,11 +53,11 @@ export default function Index() {
         <>
                 <HeadPattern />
             <body>
-            
+                <Background />
                 {message ? <Message message={message} /> : <></>}
 
-                <Background />
-
+                {loading ? <Loading /> : <> </>}
+                
                 <Container>
                         <h1>Login</h1>
                     

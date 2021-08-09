@@ -10,6 +10,7 @@ import CardStyled from '../src/styled-components/CardStyled'
 import Card from '../src/components/Card'
 import HeadPattern from '../src/components/HeadPattern'
 import Message from '../src/components/Message'
+import Loading from '../src/components/Loading'
 
 export default function Index() {
     const api = process.env.NEXT_PUBLIC_API_URL
@@ -18,17 +19,21 @@ export default function Index() {
     const [cards, setCards] = useState([])
     const [salutationDisplay, setSalutationDisplay] = useState(true)
     const [message, setMessage] = useState('')
+    const [loading, setLoading] = useState(true)
 
     const router = useRouter()
 
     
     useEffect(() => {
+        setLoading(false)
         const token = sessionStorage.getItem('token')
         
         !token ? router.push('login') : findUsername(token)
-    })
+    },[])
     
     function findUsername(token) {
+        setLoading(true)
+
         axios.get(`${api}/user`, {
             headers: {
                 'authorization': `Bearer ${token}`
@@ -52,10 +57,14 @@ export default function Index() {
         })
         .then((res) => {
             setUser(res.data.username)
+
+            setLoading(false)
         })
     }
     
     function getCards() {
+        setLoading(true)
+
         const token = sessionStorage.getItem('token')
 
         axios.get(`${api}/card`, {
@@ -65,6 +74,8 @@ export default function Index() {
         }).then((res) => {
             setSalutationDisplay(false)
             setCards(res.data.result)
+
+            setLoading(false)
         })
     }
 
@@ -74,9 +85,10 @@ export default function Index() {
                 <HeadPattern/>
             <body>
                 <Background />
-
                 { message ? <Message message={message} /> : <></> }
             
+                { loading ? <Loading /> : <></> }
+
                 {salutationDisplay ? <HomeIndex user={user} getCards={getCards} /> : <></>}
             
                 <CardStyled.Grid>
