@@ -1,4 +1,5 @@
 import CardStyled from '../styled-components/CardStyled'
+import AddCard from './AddCard'
 
 function Card({card}) {
     return(

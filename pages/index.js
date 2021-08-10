@@ -11,6 +11,7 @@ import Card from '../src/components/Card'
 import HeadPattern from '../src/components/HeadPattern'
 import Message from '../src/components/Message'
 import Loading from '../src/components/Loading'
+import AddCard from '../src/components/AddCard'
 
 export default function Index() {
     const api = process.env.NEXT_PUBLIC_API_URL
@@ -20,6 +21,7 @@ export default function Index() {
     const [salutationDisplay, setSalutationDisplay] = useState(true)
     const [message, setMessage] = useState('')
     const [loading, setLoading] = useState(true)
+    const [addCardDisplay, setAddCardDisplay] = useState(false)
 
     const router = useRouter()
 
@@ -94,6 +96,9 @@ export default function Index() {
                 <CardStyled.Grid>
                     { cards.map((e) => <Card card={e} />) }
                 </CardStyled.Grid>
+
+                <AddCard setAddCardDisplay={setAddCardDisplay} addCardDisplay={addCardDisplay} />
+
             </body>
         </>
 

@@ -17,9 +17,13 @@ const BackgroundStyled = styled.div`
 
         top:-480px;
         left:-480px;
-        animation: appear 0.8s forwards;
 
-        @keyframes appear{
+        ${({isLoading}) => {
+            if(!isLoading) {
+                return "animation: appearCircle 0.8s" 
+            }
+        }};
+        @keyframes appearCircle{
             0%{
                 top:-780px;
                 left:-680px;
@@ -38,9 +42,12 @@ const BackgroundStyled = styled.div`
         bottom:-250px;
         right:-250px;
         
-        animation: appear2 0.8s forwards;
-        
-        @keyframes appear2{
+        ${({isLoading}) => {
+            if(!isLoading) {
+                return "animation: appearCircle2 0.8s" 
+            }
+        }};
+        @keyframes appearCircle2{
             0%{
                 bottom:-450px;
                 right:-450px;
