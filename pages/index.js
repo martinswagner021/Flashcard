@@ -22,16 +22,18 @@ export default function Index() {
     const [message, setMessage] = useState('')
     const [loading, setLoading] = useState(true)
     const [addCardDisplay, setAddCardDisplay] = useState(false)
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    
 
     const router = useRouter()
 
     
     useEffect(() => {
-        setLoading(false)
         const token = sessionStorage.getItem('token')
         
         !token ? router.push('login') : findUsername(token)
-    },[])
+    }, [])
     
     function findUsername(token) {
         setLoading(true)
@@ -68,6 +70,7 @@ export default function Index() {
         setLoading(true)
 
         const token = sessionStorage.getItem('token')
+        console.log(token)
 
         axios.get(`${api}/card`, {
             headers: {
@@ -77,6 +80,42 @@ export default function Index() {
             setSalutationDisplay(false)
             setCards(res.data.result)
 
+            setLoading(false)
+        })
+    }
+
+    function createCard() {
+        setLoading(true)
+    
+        const token = sessionStorage.getItem('token')
+    
+        axios.post(`${api}/card`, {
+            title: title,
+            content: description
+        }, {
+            headers: {
+                "authorization": `Bearer ${token}`
+            }
+        })
+        .catch((err) => {
+            const {message} = err.toJSON()
+            console.log(message)
+            // err.message json returns an error explanation, since there is no http status handler that was the best option I had
+
+            if(message === "Request failed with status code 401") {
+
+                const urlMessage = new URLSearchParams({
+                    "error" : "You need to log in at first!"
+                })
+
+                return router.push(`/login?${urlMessage}`)
+            }
+
+            setMessage(message)
+        })
+        .then((res) => {
+            getCards()
+            setAddCardDisplay(false)    
             setLoading(false)
         })
     }
@@ -97,7 +136,11 @@ export default function Index() {
                     { cards.map((e) => <Card card={e} />) }
                 </CardStyled.Grid>
 
-                { !salutationDisplay ? <AddCard setAddCardDisplay={setAddCardDisplay} addCardDisplay={addCardDisplay} /> : null}
+                { !salutationDisplay ? <AddCard states={[
+                    addCardDisplay, setAddCardDisplay, title, setTitle, description, setDescription
+                ]}
+                
+                createCard={createCard} /> : null}
                 
 
             </body>
