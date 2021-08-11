@@ -87,17 +87,18 @@ export default function Index() {
                 <HeadPattern/>
             <body>
                 <Background />
-                { message ? <Message message={message} /> : <></> }
+                { message ? <Message message={message} /> : null }
             
-                { loading ? <Loading /> : <></> }
+                { loading ? <Loading /> : null }
 
-                {salutationDisplay ? <HomeIndex user={user} getCards={getCards} /> : <></>}
+                {salutationDisplay ? <HomeIndex user={user} getCards={getCards} /> : null}
             
                 <CardStyled.Grid>
                     { cards.map((e) => <Card card={e} />) }
                 </CardStyled.Grid>
 
-                <AddCard setAddCardDisplay={setAddCardDisplay} addCardDisplay={addCardDisplay} />
+                { !salutationDisplay ? <AddCard setAddCardDisplay={setAddCardDisplay} addCardDisplay={addCardDisplay} /> : null}
+                
 
             </body>
         </>

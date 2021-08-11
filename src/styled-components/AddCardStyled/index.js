@@ -1,6 +1,19 @@
 import styled from "styled-components";
 
 const AddCardStyled = styled.div`
+    
+    min-width: 10rem;
+    width: fit-content;
+    
+    padding: 3.5rem;
+
+    background-color: #ffffff;
+    border: 2px solid ${ ( {theme} ) => theme.primary};
+    border-radius: 20px;
+
+`
+
+AddCardStyled.Button = styled.div`
     position: fixed;
     bottom: 3rem;
     left: 50%;
@@ -17,14 +30,14 @@ const AddCardStyled = styled.div`
     justify-content: center;
     align-items: center;
 
-    :hover {
+    :hover, span {
         cursor: pointer;
     }
 
     span{
         position: absolute;
 
-        font-size: 3rem;
+        font-size: 2.8rem;
         font-weight: bold;
 
         color: ${({theme}) => theme.secondary.white}

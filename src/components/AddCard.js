@@ -5,13 +5,11 @@ import AddCardInput from "./AddCardInput"
 function AddCard({addCardDisplay, setAddCardDisplay}) {
     return(
         <>
-            { !addCardDisplay === true ? <AddCardInput /> : <></> }
-            <AddCardStyled onClick={() => {
-                if(addCardDisplay === true) setAddCardDisplay=false
-                else setAddCardDisplay=true
-            }}>
+            { addCardDisplay===true ? <AddCardInput /> : null }
+
+            <AddCardStyled.Button onClick={() => setAddCardDisplay(!addCardDisplay)}>
                 <span>+</span>
-            </AddCardStyled>
+            </AddCardStyled.Button>
         </>
     )
 }

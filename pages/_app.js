@@ -21,15 +21,14 @@ const GlobalStyle = createGlobalStyle`
   *{
     margin: 0px;
     padding: 0px;
+    cursor: default;
+    font-family: 'Poppins', sans-serif;
   }
   *::selection{
     background: ${theme.secondary.dark};
   }
   html{
     scroll-behavior: smooth;
-  }
-  body{
-    font-family: 'Poppins', sans-serif;
   }
   a{
     text-decoration: none;

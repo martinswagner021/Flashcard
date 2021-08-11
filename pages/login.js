@@ -54,12 +54,12 @@ export default function Index() {
                 <HeadPattern />
             <body>
                 <Background />
-                {message ? <Message message={message} /> : <></>}
+                {message ? <Message message={message} /> : null}
 
-                {loading ? <Loading /> : <> </>}
+                {loading ? <Loading /> : null}
                 
                 <Container>
-                        <h1>Login</h1>
+                        <h1>Login</h1><br/>
                     
                         <form onSubmit={e => {
                                 e.preventDefault()

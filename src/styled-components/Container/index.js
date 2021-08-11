@@ -4,17 +4,21 @@ const Container = styled.div`
     position: absolute;
     top: 50vh;
     left: 50%;
-    width: 17rem;
+    height: fit-content;
+    min-width: 12rem;
+    max-width: 50rem;
+    width: fit-content;
     transform: translate(-50%, -50%);
+
+    padding: 2rem;
 
     background-color: #ffffff;
     border: 2px solid ${ ( {theme} ) => theme.primary};
-    border-radius: 20px;
+    border-radius: 1rem;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3.5rem;
 
     span{
         color: ${({theme}) => theme.primary};
@@ -25,8 +29,10 @@ const Container = styled.div`
             border: 0px;
             border-radius: 50px;
 
-            width: 130px;
-            height: 40px;
+            padding: 0.6rem 0.8rem;
+
+            width: fit-content;
+            height: fit-content;
 
             color: #ffffff;
             transition: background-color 0.3s ease-in-out;
@@ -40,14 +46,12 @@ const Container = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        
-        margin-top: 1.5rem;
 
         p{
             text-align: center;
         }
 
-        input{
+        textarea, input{
             height: 2rem;
             width: 12rem;
             
@@ -56,20 +60,46 @@ const Container = styled.div`
             border: 2px solid transparent;
             border-bottom: 2px solid ${ ( {theme} ) => theme.primary};
             transition: border 0.3s ease-in-out;
+            
+            :hover{
+                cursor: text;
+            }
+            
+            :focus{
+                outline: 0px;
+                background-color: transparent;
+                
+                border-bottom: 2px solid ${ ( {theme} ) => theme.secondary.dark};
+            }
+            
+            ::placeholder{
+                text-align: center;
+            }
         }
-        input:focus{
-            outline: 0px;
-            background-color: transparent;
+        
+        textarea{
+            border: 2px solid ${ ( {theme} ) => theme.primary};
+            border-radius: 1rem;
 
-            border-bottom: 2px solid ${ ( {theme} ) => theme.secondary.dark};
-        }
-        input::placeholder{
-            text-align: center;
-        }
+            height: 5rem;
 
+            padding: 0.5rem;
+            resize: none;
+
+            ::placeholder{
+                
+                text-align: justify;
+            }
+            :focus{
+                border: 2px solid ${ ( {theme} ) => theme.secondary.dark};
+            }
+        }
+        
         *{
             margin-top: 0.3rem;
         }
+        
+        
     }
 `
 
