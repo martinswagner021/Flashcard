@@ -20,6 +20,8 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
 
+    animation: appearContainer 0.3s ease;
+
     span{
         color: ${({theme}) => theme.primary};
     }
@@ -36,11 +38,16 @@ const Container = styled.div`
 
             color: #ffffff;
             transition: background-color 0.3s ease-in-out;
+            
+            :hover{
+                background-color: ${ ( {theme} ) => theme.secondary.dark};
+                cursor: pointer;
+            }
+
+            :focus{
+                outline: 0px;
+            }
         }
-    button:hover{
-        background-color: ${ ( {theme} ) => theme.secondary.dark};
-        cursor: pointer;
-    }
 
     form{
         display: flex;
@@ -99,7 +106,15 @@ const Container = styled.div`
             margin-top: 0.3rem;
         }
         
-        
+
+        @keyframes appearContainer{
+            0%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
     }
 `
 
