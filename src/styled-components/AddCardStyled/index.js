@@ -30,6 +30,8 @@ AddCardStyled.Button = styled.div`
     justify-content: center;
     align-items: center;
 
+    box-shadow: 0.3rem 0.3rem 2rem black;
+
     :hover, span {
         cursor: pointer;
     }
@@ -40,7 +42,11 @@ AddCardStyled.Button = styled.div`
         font-size: 2.8rem;
         font-weight: bold;
 
-        color: ${({theme}) => theme.secondary.white}
+        color: ${({theme}) => theme.secondary.white};
+        
+        ::selection{
+            background-color: transparent;
+        }
     }
 
     animation: appearAddCard 0.8s ease;

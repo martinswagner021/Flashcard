@@ -3,7 +3,7 @@ import styled from "styled-components";
 const CardStyled = styled.div`
     background-color: ${({theme}) => theme.secondary.white};
 
-    border: 2px solid ${({theme}) => theme.primary};
+    border: 2px solid ${({theme}) => theme.secondary.bright};
     border-radius: 20px;
 
     padding: 1rem;
@@ -12,6 +12,7 @@ const CardStyled = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+
 
     h1{
         font-size: 1.5rem;
