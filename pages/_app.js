@@ -6,7 +6,8 @@ const theme = {
       "bright" : "#8EF77B",
       "dark" : "#267517",
       "white" : "#ffffff",
-      "black" : "#000000"
+      "black" : "#000000",
+      "grey" : "#C0C0C0"
   },
   "messages": {
     "error": {
@@ -21,11 +22,14 @@ const GlobalStyle = createGlobalStyle`
   *{
     margin: 0px;
     padding: 0px;
+    
     cursor: default;
+    
     font-family: 'Poppins', sans-serif;
-  }
-  *::selection{
-    background: ${theme.secondary.dark};
+    
+    ::selection{
+      background: ${theme.secondary.dark};
+    }
   }
   html{
     scroll-behavior: smooth;

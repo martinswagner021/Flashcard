@@ -30,7 +30,7 @@ AddCardStyled.Button = styled.div`
     justify-content: center;
     align-items: center;
 
-    box-shadow: 0.3rem 0.3rem 2rem black;
+    box-shadow: 0.1rem 0.1rem 0.5rem black;
 
     :hover, span {
         cursor: pointer;
@@ -49,8 +49,8 @@ AddCardStyled.Button = styled.div`
         }
     }
 
-    animation: appearAddCard 0.8s ease;
-    @keyframes appearAddCard{
+    animation: appearAddCardButton 0.8s ease;
+    @keyframes appearAddCardButton{
         0%{
             opacity: 0;
             transform: translate(-50%,200%);
