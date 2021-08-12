@@ -43,22 +43,7 @@ export default function Index() {
                 'authorization': `Bearer ${token}`
             }
         })
-        .catch((err) => {
-            const {message} = err.toJSON()
-            console.log(message)
-            // err.message json returns an error explanation, since there is no http status handler that was the best option I had
-
-            if(message === "Request failed with status code 401") {
-
-                const urlMessage = new URLSearchParams({
-                    "error" : "You need to log in at first!"
-                })
-
-                return router.push(`/login?${urlMessage}`)
-            }
-
-            setMessage(message)
-        })
+        .catch(err => errorHandler(err))
         .then((res) => {
             setUser(res.data.username)
 
@@ -97,27 +82,29 @@ export default function Index() {
                 "authorization": `Bearer ${token}`
             }
         })
-        .catch((err) => {
-            const {message} = err.toJSON()
-            console.log(message)
-            // err.message json returns an error explanation, since there is no http status handler that was the best option I had
-
-            if(message === "Request failed with status code 401") {
-
-                const urlMessage = new URLSearchParams({
-                    "error" : "You need to log in at first!"
-                })
-
-                return router.push(`/login?${urlMessage}`)
-            }
-
-            setMessage(message)
-        })
+        .catch(err => errorHandler(err))
         .then((res) => {
             getCards()
             setAddCardDisplay(false)    
             setLoading(false)
         })
+    }
+
+    function errorHandler(err) {
+        const {message} = err.toJSON()
+        console.log(message)
+        // err.message json returns an error explanation, since there is no http status handler that was the best option I had
+
+        if(message === "Request failed with status code 401") {
+
+            const urlMessage = new URLSearchParams({
+                "error" : "You need to log in at first!"
+            })
+
+            return router.push(`/login?${urlMessage}`)
+        }
+
+        setMessage(message)
     }
 
  
