@@ -38,10 +38,12 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: ${theme.primary};
     transition: color 0.3s ease-in-out;
-  }
-  a:hover{
-    color: ${theme.secondary.dark};
-    transition: color 0.3s ease-in-out;
+    
+    :hover{
+      color: ${theme.secondary.dark};
+      transition: color 0.3s ease-in-out;
+      cursor: pointer;
+    }
   }
 `
 

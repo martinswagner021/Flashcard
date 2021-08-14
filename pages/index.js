@@ -55,7 +55,6 @@ export default function Index() {
         setLoading(true)
 
         const token = sessionStorage.getItem('token')
-        console.log(token)
 
         axios.get(`${api}/card`, {
             headers: {
@@ -84,9 +83,25 @@ export default function Index() {
         })
         .catch(err => errorHandler(err))
         .then((res) => {
+            setAddCardDisplay(false)
             getCards()
-            setAddCardDisplay(false)    
-            setLoading(false)
+        })
+    }
+
+    function deleteCard(cardId) {
+        setLoading(true)
+    
+        const token = sessionStorage.getItem('token')
+        const cardIdUrl = new URLSearchParams({card: cardId})
+
+        axios.delete(`${api}/card?${cardIdUrl}`, {
+            headers: {
+                "authorization": `Bearer ${token}`
+            }
+        })
+        .catch(err => errorHandler(err))
+        .then((res) => {
+            getCards()
         })
     }
 
@@ -120,7 +135,9 @@ export default function Index() {
                 {salutationDisplay ? <HomeIndex user={user} getCards={getCards} /> : null}
             
                 <CardStyled.Grid>
-                    { cards.map((e) => <Card card={e} />) }
+                    { cards.map((e) => <Card card={e} methods={[
+                        deleteCard
+                    ]} />) }
                 </CardStyled.Grid>
 
                 { !salutationDisplay ? <AddCard states={[
