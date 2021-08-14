@@ -1,10 +1,13 @@
 import Container from "../styled-components/Container";
 
 function AddCardInput({states, createCard}) {
-    const [title, setTitle, description, setDescription] = states
+    const [title, setTitle, description, setDescription, addCardDisplay, setAddCardDisplay] = states
 
     return(
         <Container>
+            <div className="tools">
+                <span className="close-window" onClick={e => setAddCardDisplay(!addCardDisplay)}>X</span>
+            </div>
             <form onSubmit={(e) => {
                 e.preventDefault()
                 createCard()

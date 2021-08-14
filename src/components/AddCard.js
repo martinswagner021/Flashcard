@@ -7,7 +7,7 @@ function AddCard({states, createCard}) {
 
     return(
         <>
-            { addCardDisplay===true ? <AddCardInput states={[title, setTitle, description, setDescription]} createCard={createCard} /> : null }
+            { addCardDisplay===true ? <AddCardInput states={[title, setTitle, description, setDescription, addCardDisplay, setAddCardDisplay]} createCard={createCard} /> : null }
 
             <AddCardStyled.Button onClick={() => setAddCardDisplay(!addCardDisplay)}>
                 <span>+</span>

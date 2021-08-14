@@ -33,10 +33,10 @@ const CardStyled = styled.div`
     }
     .remove{
         color: ${({theme}) => theme.secondary.black};
-        font-weight: bold;
         font-size: 1.2rem;
         :hover{
-            color: red;
+            color: ${({theme}) => theme.primary};
+            cursor: pointer;
         }
     }
     .tools{
@@ -51,9 +51,7 @@ CardStyled.Grid = styled.div`
     padding: 1rem;
 
     display: flex;
-    flex-direction: column;
-
-    
+    flex-direction: column;    
     
     @media (min-width: 768px) {
         display: grid;

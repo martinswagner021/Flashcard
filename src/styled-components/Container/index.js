@@ -9,21 +9,33 @@ const Container = styled.div`
     max-width: 50rem;
     width: fit-content;
     transform: translate(-50%, -50%);
-
     
-    padding: 2rem;
+    padding: 1rem;
     
     background-color: #ffffff;
     border: 2px solid ${ ( {theme} ) => theme.primary};
     border-radius: 1rem;
     
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
     box-shadow: 0.3rem 0.3rem 2rem black;
 
     animation: appearContainer 0.3s ease;
+
+    .tools{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .close-window{
+
+        color: ${({theme}) => theme.secondary.grey};
+        font-size: 1rem;
+        :hover{
+            color: ${({theme}) => theme.primary};
+            cursor: pointer;
+        }
+        
+    }
 
     span{
         color: ${({theme}) => theme.primary};
