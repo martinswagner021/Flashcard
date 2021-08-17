@@ -22,6 +22,7 @@ export default function Index() {
     const [message, setMessage] = useState('')
     const [loading, setLoading] = useState(true)
     const [addCardDisplay, setAddCardDisplay] = useState(false)
+    const [editCardDisplay, setEditCardDisplay] = useState(false)
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     
@@ -160,7 +161,7 @@ export default function Index() {
                     { cards.map((e) => <Card 
                     card={e} 
                     methods={[ deleteCard, modifyCard ]} 
-                    states={[ addCardDisplay, setAddCardDisplay ]} />) }
+                    states={[ addCardDisplay, setAddCardDisplay, editCardDisplay, setEditCardDisplay ]} />) }
                 </CardStyled.Grid>
 
                 { !salutationDisplay ? <AddCard states={[
