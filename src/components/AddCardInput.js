@@ -5,9 +5,6 @@ function AddCardInput({states, createCard}) {
 
     return(
         <Container>
-            <div className="tools">
-                <span className="close-window" onClick={e => setAddCardDisplay(!addCardDisplay)}>X</span>
-            </div>
             <form onSubmit={(e) => {
                 e.preventDefault()
                 createCard()
@@ -17,7 +14,10 @@ function AddCardInput({states, createCard}) {
                 <input type="text" placeholder="Title" onChange={(e) => setTitle(e.target.value)}/><br/>
                 <textarea  rows="5" placeholder="Description" onChange={(e) => setDescription(e.target.value)}></textarea><br/>
                 
-                <button>Send</button>
+                <div className="tools">
+                    <button type="submit" >Send</button>
+                    <button className="close-window" onClick={e => setAddCardDisplay(!addCardDisplay)} >Cancel</button>
+                </div>        
             </form>
         </Container>
     )

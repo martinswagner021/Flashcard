@@ -7,7 +7,9 @@ const theme = {
       "dark" : "#267517",
       "white" : "#ffffff",
       "black" : "#000000",
-      "grey" : "#C0C0C0"
+      "grey" : "#C0C0C0",
+      "red" : "#ff0000",
+      "darkred": "#8b1000"
   },
   "messages": {
     "error": {

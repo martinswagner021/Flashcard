@@ -104,6 +104,7 @@ export default function Index() {
         })
         .catch(err => errorHandler(err))
         .then((res) => {
+            console.log(res.data)
             getCards()
             setAddCardDisplay(false)
         })

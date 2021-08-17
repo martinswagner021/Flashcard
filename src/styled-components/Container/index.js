@@ -10,6 +10,10 @@ const Container = styled.div`
     width: fit-content;
     transform: translate(-50%, -50%);
     
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     padding: 1rem;
     
     background-color: #ffffff;
@@ -20,21 +24,20 @@ const Container = styled.div`
 
     animation: appearContainer 0.3s ease;
 
+
     .tools{
+        width: 100%;
+
         display: flex;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: space-around;
     }
 
     .close-window{
-
-        color: ${({theme}) => theme.secondary.grey};
-        font-size: 1rem;
+        background-color: ${({theme}) => theme.secondary.red};
         :hover{
-            color: ${({theme}) => theme.primary};
-            cursor: pointer;
+            background-color: ${({theme}) => theme.secondary.darkred};
         }
-        
     }
 
     span{
