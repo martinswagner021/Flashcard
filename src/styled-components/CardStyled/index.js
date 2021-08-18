@@ -11,13 +11,13 @@ const CardStyled = styled.div`
     flex-direction: column;
 
     padding: .5rem;
-    margin-top: .5rem;
 
-    h1{
-        font-size: 1rem;
+    font-size: 1rem;
+
+    h3{
         border-bottom: 2px solid ${({theme}) => theme.primary};
     }
-    h1, p{
+    h3, p{
         word-wrap: break-word;
     }
     p{
@@ -25,15 +25,18 @@ const CardStyled = styled.div`
     }
 
     .edit, .remove{
-
         margin: 0rem 0.5rem;
         :hover{
             cursor: pointer;
         }
     }
+    .edit{
+        width: .8em;
+        height: .8em;
+    }
     .remove{
         color: ${({theme}) => theme.secondary.black};
-        font-size: 1.2rem;
+        font-size: 1.2em;
         :hover{
             color: ${({theme}) => theme.primary};
             cursor: pointer;
@@ -44,21 +47,18 @@ const CardStyled = styled.div`
         align-items: center;
         justify-content: flex-end;
     }
+
+    @media (min-width: 750px) {
+        font-size: 1.5rem;
+    }
 `
 CardStyled.Grid = styled.div`
-    height: 100vh;
 
     padding: 1rem;
 
     display: flex;
-    flex-direction: column;    
-    
-    @media (min-width: 768px) {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-        grid-column-gap: 1rem;
-    }
+    flex-direction: column;
+    gap: 1rem;
 `
 
 export default CardStyled
