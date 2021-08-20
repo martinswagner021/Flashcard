@@ -36,8 +36,8 @@ const CardStyled = styled.div`
                 color: ${({theme}) => theme.secondary.dark};
                 cursor: pointer;
             }
-
         }
+        
         .remove{
             :hover{
                 color: ${({theme}) => theme.secondary.darkred};
