@@ -24,28 +24,25 @@ const CardStyled = styled.div`
         margin-top: 1rem;
     }
 
-    .edit, .remove{
-        margin: 0rem 0.5rem;
-        :hover{
-            cursor: pointer;
-        }
-    }
-    .edit{
-        width: .8em;
-        height: .8em;
-    }
-    .remove{
-        color: ${({theme}) => theme.secondary.black};
-        font-size: 1.2em;
-        :hover{
-            color: ${({theme}) => theme.primary};
-            cursor: pointer;
-        }
-    }
     .tools{
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        
+        span{
+            margin: 0rem 0.5rem;
+            color: ${({theme}) => theme.secondary.black};
+            :hover{
+                color: ${({theme}) => theme.secondary.dark};
+                cursor: pointer;
+            }
+
+        }
+        .remove{
+            :hover{
+                color: ${({theme}) => theme.secondary.darkred};
+            }
+        }
     }
 
     @media (min-width: 750px) {
