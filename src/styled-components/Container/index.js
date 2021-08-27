@@ -16,15 +16,15 @@ const Container = styled.div`
 
     padding: 1rem;
     
-    background-color: #ffffff;
-    border: 2px solid ${ ( {theme} ) => theme.primary};
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.75);
     border-radius: 1rem;
-    
-    box-shadow: 0.3rem 0.3rem 2rem black;
-
+    border: 1px solid rgba(209, 213, 219, 0.3);
+        
     animation: appearContainer 0.3s ease;
 
-
+    
     .tools{
         width: 100%;
 

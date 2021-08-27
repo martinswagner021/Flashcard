@@ -2,17 +2,18 @@ import styled from "styled-components";
 
 const CardStyled = styled.div`
 
-    background-color: ${({theme}) => theme.secondary.white};
-
-    border: 2px solid ${({theme}) => theme.secondary.bright};
-    border-radius: 1rem;
-
     display: flex;
     flex-direction: column;
 
     padding: .5rem;
 
     font-size: 1rem;
+
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 1rem;
+    border: 1px solid rgba(209, 213, 219, 0.3);
 
     h3{
         border-bottom: 2px solid ${({theme}) => theme.primary};

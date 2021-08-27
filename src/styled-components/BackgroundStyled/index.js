@@ -10,7 +10,13 @@ const BackgroundStyled = styled.div`
     width: 100%;
     height: 100vh;
 
-    .Circle1{
+    .Waves{
+        position: absolute;
+
+        height: 100vh;
+    }
+
+    /* .Circle1{
         width: 900px;
 
         position: absolute;
@@ -57,7 +63,7 @@ const BackgroundStyled = styled.div`
                 right:-250px;
             }
         }
-    }
+    } */
 `
 
 export default BackgroundStyled

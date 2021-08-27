@@ -130,9 +130,9 @@ export default function Index() {
     function errorHandler(err) {
         const {message} = err.toJSON()
         console.log(message)
-        // err.message json returns an error explanation, since there is no http status handler that was the best option I had
-
+        
         if(message === "Request failed with status code 401") {
+            // err.message json returns an error explanation, since there is no http status handler that was the best option I had.
 
             const urlMessage = new URLSearchParams({
                 "error" : "You need to log in at first!"
@@ -159,8 +159,7 @@ export default function Index() {
                 <CardStyled.Grid>
                     { cards.map((e) => <Card 
                     card={e} 
-                    methods={[ deleteCard, modifyCard ]} 
-                    states={[ addCardDisplay, setAddCardDisplay]} />) }
+                    methods={[ deleteCard, modifyCard ]} />) }
                 </CardStyled.Grid>
 
                 { !salutationDisplay ? <AddCard states={[

@@ -23,14 +23,17 @@ AddCardStyled.Button = styled.div`
     width: 3rem;
     height: 3rem;
 
-    background-color: ${({theme}) => theme.primary};
     border-radius: 50%;
+
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(0, 255, 0, 0.75);
+    border: 1px solid rgba(209, 213, 219, 0.3);
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    box-shadow: 0.1rem 0.1rem 0.5rem black;
 
     :hover, span {
         cursor: pointer;
